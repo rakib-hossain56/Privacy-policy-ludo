@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Ludora</title>
+<style>
+  :root{
+    --board-cream:#FBF7EE;
+    --ink:#22242B;
+    --ink-soft:#5B5E6B;
+    --line:#E7E1D3;
+    --panel:#FFFFFF;
+    --red:#E4572E;
+    --green:#3A9B5C;
+    --yellow:#E8B23A;
+    --blue:#2F6FED;
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--board-cream);
+    color:var(--ink);
+    font-family:'Georgia','Iowan Old Style', ui-serif, serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .utility{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* ---------- Path track background flourish ---------- */
+  .track-strip{
+    position:fixed;
+    top:0; left:0; right:0;
+    height:6px;
+    display:flex;
+    z-index:50;
+  }
+  .track-strip span{flex:1;}
+  .track-strip span:nth-child(4n+1){background:var(--red);}
+  .track-strip span:nth-child(4n+2){background:var(--green);}
+  .track-strip span:nth-child(4n+3){background:var(--yellow);}
+  .track-strip span:nth-child(4n+4){background:var(--blue);}
+
+  /* ---------- Header ---------- */
+  header{
+    padding:64px 24px 40px;
+    max-width:840px;
+    margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+
+  .badge .dots{display:flex; gap:4px;}
+  .badge .dots i{width:6px;height:6px;border-radius:50%;display:block;}
+  .badge .dots i:nth-child(1){background:var(--red);}
+  .badge .dots i:nth-child(2){background:var(--green);}
+  .badge .dots i:nth-child(3){background:var(--yellow);}
+  .badge .dots i:nth-child(4){background:var(--blue);}
+
+  h1{
+    font-size:44px;
+    line-height:1.12;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+
+  .subtitle{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    color:var(--ink-soft);
+    font-size:16px;
+    max-width:56ch;
+    margin:0 0 22px;
+  }
+
+  .meta-row{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 22px;
+  }
+  .meta-row strong{color:var(--ink);}
+
+  /* ---------- Layout ---------- */
+  .wrap{
+    max-width:840px;
+    margin:0 auto;
+    padding:40px 24px 100px;
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:48px;
+  }
+
+  @media (max-width:760px){
+    .wrap{grid-template-columns:1fr;}
+    header{padding:48px 20px 32px;}
+    h1{font-size:32px;}
+  }
+
+  /* ---------- Nav / TOC ---------- */
+  nav{
+    position:sticky;
+    top:32px;
+    align-self:start;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+  }
+  nav .toc-title{
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  nav ol{
+    list-style:none;
+    margin:0; padding:0;
+    counter-reset:sec;
+  }
+  nav li{
+    counter-increment:sec;
+    margin-bottom:10px;
+  }
+  nav a{
+    display:flex;
+    gap:10px;
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:13.5px;
+    line-height:1.4;
+    transition:color .15s ease;
+  }
+  nav a::before{
+    content:counter(sec, decimal-leading-zero);
+    color:#C9C2AC;
+    font-variant-numeric:tabular-nums;
+    flex-shrink:0;
+  }
+  nav a:hover{color:var(--ink);}
+
+  @media (max-width:760px){
+    nav{position:static; margin-bottom:8px;}
+    nav ol{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 16px;
+    }
+  }
+
+  /* ---------- Content ---------- */
+  main section{
+    margin-bottom:46px;
+    scroll-margin-top:28px;
+  }
+
+  main h2{
+    font-size:22px;
+    margin:0 0 6px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+
+  main h2 .pip{
+    width:10px;height:10px;
+    border-radius:50%;
+    flex-shrink:0;
+    transform:translateY(-1px);
+  }
+
+  section:nth-of-type(4n+1) h2 .pip{background:var(--red);}
+  section:nth-of-type(4n+2) h2 .pip{background:var(--green);}
+  section:nth-of-type(4n+3) h2 .pip{background:var(--yellow);}
+  section:nth-of-type(4n+4) h2 .pip{background:var(--blue);}
+
+  main p, main li{
+    color:#3B3D46;
+    font-size:15.5px;
+  }
+
+  main h3{
+    font-size:16px;
+    margin:22px 0 8px;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    letter-spacing:0.01em;
+  }
+
+  main ul{
+    padding-left:20px;
+    margin:10px 0;
+  }
+  main li{margin-bottom:6px;}
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 22px;
+    margin-top:14px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:14px;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:13.5px;
+    background:var(--panel);
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  th, td{
+    text-align:left;
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{
+    background:#F4EFE2;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+  tr:last-child td{border-bottom:none;}
+
+  .placeholder{
+    background:#FFF6E0;
+    color:#7A5A00;
+    padding:1px 6px;
+    border-radius:5px;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:0.92em;
+    border:1px dashed #E3C570;
+  }
+
+  a.inline{color:var(--blue); text-decoration:underline; text-decoration-color:#C6D6FB;}
+  a.inline:hover{text-decoration-color:var(--blue);}
+
+  .contact-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:16px;
+  }
+  @media (max-width:520px){ .contact-card{grid-template-columns:1fr;} }
+
+  .contact-card .item{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+  }
+  .contact-card .item span{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .contact-card .item strong{font-size:15px; font-weight:600;}
+
+  footer{
+    max-width:840px;
+    margin:0 auto;
+    padding:30px 24px 60px;
+    border-top:1px solid var(--line);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  ::selection{background:#FBE3B0;}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="track-strip" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<header>
+  <div class="badge">
+    <span class="dots"><i></i><i></i><i></i><i></i></span>
+    Legal · Player Trust
+  </div>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">
+    This policy explains what information <strong>Ludora</strong> collects when you play,
+    why we collect it, and the choices you have. We wrote it in plain language on purpose —
+    a board game shouldn't need a law degree to understand.
+  </p>
+  <div class="meta-row">
+    <span><strong>Last updated:</strong> <span class="placeholder">04 July 2026</span></span>
+    <span><strong>App name:</strong> <span class="placeholder">Ludora</span></span>
+    <span><strong>Developer:</strong> <span class="placeholder">LogicWeave Studios</span></span>
+    <span><strong>Package ID:</strong> <span class="placeholder">com.logicweave.ludora</span></span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav aria-label="Table of contents">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#data-we-collect">Data we collect</a></li>
+      <li><a href="#permissions">Device permissions</a></li>
+      <li><a href="#how-we-use">How we use data</a></li>
+      <li><a href="#sharing">Sharing &amp; third parties</a></li>
+      <li><a href="#ads">Ads &amp; analytics</a></li>
+      <li><a href="#iap">Purchases &amp; billing</a></li>
+      <li><a href="#retention">Data retention</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#rights">Your rights &amp; choices</a></li>
+      <li><a href="#international">International transfers</a></li>
+      <li><a href="#changes">Policy changes</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section id="overview">
+      <h2><span class="pip"></span>1. Overview</h2>
+      <p>
+        <span class="placeholder">Ludora</span> ("we", "us", "our", or the "App") is a
+        multiplayer board game published by <span class="placeholder">LogicWeave Studios</span>
+        ("Developer"). This Privacy Policy applies to the App available on Google Play and describes
+        our practices regarding the collection, use, storage, and disclosure of information when you
+        install, access, or play the game.
+      </p>
+      <p>
+        By downloading or using the App, you agree to the collection and use of information in
+        accordance with this policy. If you do not agree, please do not use the App.
+      </p>
+    </section>
+
+    <section id="data-we-collect">
+      <h2><span class="pip"></span>2. Data we collect</h2>
+      <p>We collect only what's needed to run matches, keep accounts secure, and improve the game.</p>
+
+      <h3>Information you provide</h3>
+      <ul>
+        <li><strong>Account details</strong> — display name, avatar, and profile photo if you sign in with Google Play Games, Facebook, or a similar provider.</li>
+        <li><strong>Contact information</strong> — email address, only if you contact support or opt into newsletters.</li>
+        <li><strong>User content</strong> — chat messages sent to other players during a match, and any support tickets or feedback you submit.</li>
+      </ul>
+
+      <h3>Information collected automatically</h3>
+      <ul>
+        <li><strong>Device information</strong> — device model, operating system version, unique device identifiers (such as Advertising ID), language, and time zone.</li>
+        <li><strong>Gameplay data</strong> — match history, dice rolls, win/loss records, coins and in-game currency balances, level progress, and session duration.</li>
+        <li><strong>Log and diagnostic data</strong> — crash reports, app performance metrics, IP address, and approximate location derived from IP (city/region level only).</li>
+        <li><strong>Usage analytics</strong> — screens viewed, buttons tapped, and feature engagement, collected in aggregate to improve the game.</li>
+      </ul>
+
+      <h3>Information from third parties</h3>
+      <ul>
+        <li>Basic profile data from sign-in providers (Google, Facebook) if you choose social login.</li>
+        <li>Ad performance data from our advertising and attribution partners, listed in <a href="#ads">Section 6</a>.</li>
+      </ul>
+
+      <div class="card">
+        <strong class="utility" style="font-size:13px; letter-spacing:.02em;">Quick summary table</strong>
+        <table>
+          <thead>
+            <tr><th>Category</th><th>Examples</th><th>Collected?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Precise location</td><td>GPS coordinates</td><td>No</td></tr>
+            <tr><td>Approximate location</td><td>City-level, via IP</td><td>Yes</td></tr>
+            <tr><td>Contacts</td><td>Phone contacts / address book</td><td>No</td></tr>
+            <tr><td>Photos &amp; media</td><td>Camera roll access</td><td>No, unless you attach an avatar image</td></tr>
+            <tr><td>Financial info</td><td>Card numbers, bank details</td><td>No — handled entirely by Google Play Billing</td></tr>
+            <tr><td>Device identifiers</td><td>Advertising ID, device ID</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="permissions">
+      <h2><span class="pip"></span>3. Device permissions</h2>
+      <p>The App may request the following Android permissions. You can review or revoke these at any time in your device settings.</p>
+      <ul>
+        <li><strong>Internet access</strong> — required to play online multiplayer matches.</li>
+        <li><strong>Network state</strong> — used to detect connectivity and reconnect you to matches.</li>
+        <li><strong>Vibration</strong> — used for haptic feedback on dice rolls and moves.</li>
+        <li><strong>Storage (optional)</strong> — used only if you choose to save or share a screenshot of your board.</li>
+        <li><strong>Notifications</strong> — used to alert you about your turn, friend requests, and daily rewards, if enabled.</li>
+      </ul>
+    </section>
+
+    <section id="how-we-use">
+      <h2><span class="pip"></span>4. How we use your data</h2>
+      <ul>
+        <li>To operate core gameplay — matchmaking, turn sequencing, and syncing game state in real time.</li>
+        <li>To maintain your profile, progress, coins, and leaderboard standing.</li>
+        <li>To detect and prevent cheating, bots, and abusive behavior between players.</li>
+        <li>To respond to support requests and troubleshoot technical issues.</li>
+        <li>To personalize content, such as suggested opponents or relevant offers.</li>
+        <li>To measure app performance and fix crashes through diagnostic logs.</li>
+        <li>To comply with legal obligations and enforce our Terms of Service.</li>
+      </ul>
+    </section>
+
+    <section id="sharing">
+      <h2><span class="pip"></span>5. Sharing &amp; third parties</h2>
+      <p>We do not sell your personal data. We share limited data only with:</p>
+      <ul>
+        <li><strong>Service providers</strong> — cloud hosting (e.g. Google Firebase / AWS), analytics, and crash-reporting vendors bound by confidentiality agreements.</li>
+        <li><strong>Other players</strong> — your display name, avatar, and level are visible to opponents during a match; chat messages are visible to players in that match.</li>
+        <li><strong>Advertising partners</strong> — anonymized/pseudonymous identifiers for ad delivery and measurement, if the App shows ads (see <a href="#ads">Section 6</a>).</li>
+        <li><strong>Legal authorities</strong> — where required by law, court order, or to protect the rights, safety, and property of our users or the public.</li>
+        <li><strong>Business transfers</strong> — if the App or studio is involved in a merger, acquisition, or asset sale, your data may be transferred as part of that transaction.</li>
+      </ul>
+    </section>
+
+    <section id="ads">
+      <h2><span class="pip"></span>6. Ads &amp; analytics</h2>
+      <p>
+        The App may display banner, interstitial, or rewarded video ads through third-party ad
+        networks, and may use analytics SDKs to understand app usage. These partners may include:
+      </p>
+      <ul>
+        <li><span class="placeholder">Google AdMob</span></li>
+        <li><span class="placeholder">Meta Audience Network</span></li>
+        <li><span class="placeholder">Unity Ads</span></li>
+        <li><span class="placeholder">Firebase Analytics / Crashlytics</span></li>
+      </ul>
+      <p>
+        These providers may collect device identifiers (like the Advertising ID) and usage data to
+        serve relevant ads and measure performance, under their own privacy policies. You can opt out
+        of personalized advertising through your device's <em>Settings → Privacy → Ads</em> menu, or
+        by resetting your Advertising ID.
+      </p>
+    </section>
+
+    <section id="iap">
+      <h2><span class="pip"></span>7. Purchases &amp; billing</h2>
+      <p>
+        All in-app purchases (coins, gems, ad-removal, cosmetic items, etc.) are processed entirely
+        by <strong>Google Play Billing</strong>. We never receive or store your payment card number,
+        bank details, or full billing address. We only receive confirmation that a purchase was
+        completed and its associated order ID, which we use to credit your in-game account.
+      </p>
+    </section>
+
+    <section id="retention">
+      <h2><span class="pip"></span>8. Data retention</h2>
+      <p>
+        We retain account and gameplay data for as long as your account is active, and for a
+        reasonable period afterward in case you return. Diagnostic logs are typically retained for
+        <span class="placeholder">90 days</span>. You may request deletion of your account and
+        associated data at any time — see <a href="#rights">Section 11</a>.
+      </p>
+    </section>
+
+    <section id="security">
+      <h2><span class="pip"></span>9. Security</h2>
+      <p>
+        We use industry-standard safeguards — encrypted connections (HTTPS/TLS), access controls,
+        and secure cloud infrastructure — to protect your information. However, no method of
+        transmission or storage is 100% secure, and we cannot guarantee absolute security.
+      </p>
+    </section>
+
+    <section id="children">
+      <h2><span class="pip"></span>10. Children's privacy</h2>
+      <p>
+        The App is intended for general audiences and is not directed at children under 13
+        (or the minimum age required in your country). We do not knowingly collect personal
+        information from children under 13. If we learn that we have inadvertently collected such
+        information, we will delete it promptly. If you believe a child has provided us with
+        personal data, please contact us using the details in <a href="#contact">Section 14</a>.
+      </p>
+    </section>
+
+    <section id="rights">
+      <h2><span class="pip"></span>11. Your rights &amp; choices</h2>
+      <p>Depending on your location, you may have the right to:</p>
+      <ul>
+        <li>Access the personal data we hold about you.</li>
+        <li>Request correction of inaccurate or incomplete data.</li>
+        <li>Request deletion of your account and associated data.</li>
+        <li>Object to or restrict certain processing, including personalized ads.</li>
+        <li>Request a copy of your data in a portable format.</li>
+        <li>Withdraw consent at any time where processing is based on consent.</li>
+      </ul>
+      <p>
+        To exercise any of these rights, email us at
+        <a class="inline" href="mailto:privacy@yourstudio.com">privacy@yourstudio.com</a>
+        or use the in-app <em>Settings → Account → Delete My Data</em> option. We will respond
+        within the timeframe required by applicable law.
+      </p>
+    </section>
+
+    <section id="international">
+      <h2><span class="pip"></span>12. International data transfers</h2>
+      <p>
+        Your information may be processed and stored on servers located outside your country of
+        residence, including in <span class="placeholder">the United States / Singapore / European Union</span>.
+        Where required, we rely on appropriate safeguards, such as standard contractual clauses,
+        to protect data transferred internationally.
+      </p>
+    </section>
+
+    <section id="changes">
+      <h2><span class="pip"></span>13. Changes to this policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time to reflect changes in our practices or
+        for legal reasons. We will notify you of material changes by updating the "Last updated"
+        date above and, where appropriate, through an in-app notice. Continued use of the App after
+        changes take effect constitutes acceptance of the revised policy.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2><span class="pip"></span>14. Contact us</h2>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy or your data, reach out:</p>
+      <div class="contact-card">
+        <div class="item">
+          <span>Developer / Publisher</span>
+          <strong class="placeholder">LogicWeave Studios</strong>
+        </div>
+        <div class="item">
+          <span>Support email</span>
+          <strong><a class="inline" href="mailto:support@yourstudio.com">studios.logicweave@gmail.com</a></strong>
+        </div>
+        <!-- <div class="item">
+          <span>Privacy email</span>
+          <strong><a class="inline" href="mailto:privacy@yourstudio.com">privacy@yourstudio.com</a></strong>
+        </div>
+        <div class="item">
+          <span>Mailing address</span>
+          <strong class="placeholder">123 Game Street, Dhaka, Bangladesh</strong>
+        </div> -->
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <span>© <span class="placeholder">2026</span> <span class="placeholder">LogicWeave Studios</span>. All rights reserved.</span>
+  <span>Ludora · Privacy Policy</span>
+</footer>
+
+</body>
+</html>
